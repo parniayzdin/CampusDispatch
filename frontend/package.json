@@ -2,18 +2,73 @@
   "name": "campusdispatch-frontend",
   "version": "0.1.0",
   "private": true,
+  "description": "Simple React dashboard for viewing and managing campus incidents.",
+  "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:host": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host",
+    "clean": "rimraf dist node_modules .vite",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
+    "format": "prettier --write \"**/*.{js,jsx,json,md,css,html}\"",
+    "check": "npm run lint && npm run build"
   },
   "dependencies": {
+    "axios": "^1.6.8",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "axios": "^1.6.8"
+    "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.3.3",
+    "rimraf": "^5.0.10",
     "vite": "^5.2.0"
+  },
+  "eslintConfig": {
+    "env": { "browser": true, "es2022": true },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:jsx-a11y/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "parserOptions": { "ecmaFeatures": { "jsx": true }, "sourceType": "module" },
+    "settings": { "react": { "version": "detect" } },
+    "rules": {
+      "react/prop-types": "off" // will add types later
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "printWidth": 100,
+    "trailingComma": "es5"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/parniayzdin/CampusDispatch-Lite.git"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "homepage": "https://github.com/parniayzdin/CampusDispatch-Lite#readme",
+  "bugs": {
+    "url": "https://github.com/parniayzdin/CampusDispatch-Lite/issues"
   }
 }
