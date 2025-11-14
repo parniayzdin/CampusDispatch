@@ -1,6 +1,5 @@
 import React from 'react'
 
-/* placeholder “map”. you’ll swap in Leaflet/Mapbox later */
 export default function MapPanel({ markerTitle, markerBody, markerTime }) {
   return (
     <div className="map-wrap">
