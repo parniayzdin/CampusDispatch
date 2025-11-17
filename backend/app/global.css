@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 217 100% 95%;
+    --foreground: 217 5% 10%;
+    --card: 217 50% 90%;
+    --card-foreground: 217 5% 15%;
+    --popover: 217 100% 95%;
+    --popover-foreground: 217 100% 10%;
+    --primary: 217 45% 27%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 30% 70%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 179 30% 85%;
+    --muted-foreground: 217 5% 35%;
+    --accent: 179 30% 80%;
+    --accent-foreground: 217 5% 15%;
+    --destructive: 0 100% 30%;
+    --destructive-foreground: 217 5% 90%;
+    --border: 217 30% 50%;
+    --input: 217 30% 26%;
+    --ring: 217 45% 27%;
+    --radius: 0.3rem;
+  }
+  .dark {
+    --background: 217 50% 10%;
+    --foreground: 217 5% 90%;
+    --card: 217 50% 10%;
+    --card-foreground: 217 5% 90%;
+    --popover: 217 50% 5%;
+    --popover-foreground: 217 5% 90%;
+    --primary: 217 45% 27%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 30% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 179 30% 25%;
+    --muted-foreground: 217 5% 60%;
+    --accent: 179 30% 25%;
+    --accent-foreground: 217 5% 90%;
+    --destructive: 0 100% 30%;
+    --destructive-foreground: 217 5% 90%;
+    --border: 217 30% 26%;
+    --input: 217 30% 26%;
+    --ring: 217 45% 27%;
+    --radius: 0.3rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+::-webkit-scrollbar {
+  @apply w-2.5 h-2.5;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-border border-[1px] border-transparent border-solid bg-clip-padding;
+}
+
+.leaflet-popup .leaflet-popup-content-wrapper {
+  border-radius: 0px;
+}
+
+.leaflet-popup-tip {
+  display: none;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+  margin: 0 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: none !important;
+}
+
+.leaflet-popup-content p {
+  margin: 0 !important;
+}
+
+.leaflet-marker-icon {
+  filter: hue-rotate(13deg);
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.ellipsis span {
+  opacity: 0;
+  animation: blink 1.5s infinite;
+}
+
+.ellipsis span:nth-child(1) {
+  animation-delay: 0s;
+}
+.ellipsis span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.ellipsis span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
