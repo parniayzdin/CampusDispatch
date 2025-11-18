@@ -5,6 +5,8 @@ CampusDispatch Lite makes it easy to keep campus operations running smoothly. Us
 - Real-time issue reporting
 - Dispatcher tools for assigning and updating tasks
 - A live dashboard showing all open and resolved incidents
+- Simple, intuitive UI for both users and responders
+
 
 
 
