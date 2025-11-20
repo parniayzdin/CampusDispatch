@@ -1,8 +1,7 @@
-// components/call-card.tsx
-
+// components/call-card.js
 import useCallLog from "@/context/use-call-log";
 import { cn } from "@/utils";
-import { callTypeMap } from "@/utils/types"; 
+import { callTypeMap } from "@/utils/types";
 import { format } from "date-fns";
 import {
   Ambulance,
@@ -17,9 +16,7 @@ import {
 } from "lucide-react";
 import React from "react";
 
-// small icon map – we can treat these as "campus categories"
-// even though the keys are the old ones (Fire, Medical, etc.)
-const typeIconMap: Record<string, React.ReactElement> = {
+const typeIconMap = {
   Fire: <Flame strokeWidth={0.8} />,
   Medical: <Ambulance strokeWidth={0.8} />,
   Police: <Siren strokeWidth={0.8} />,
@@ -28,18 +25,17 @@ const typeIconMap: Record<string, React.ReactElement> = {
   Utility: <Zap strokeWidth={0.8} />,
   PublicDisturbance: <Ear strokeWidth={0.8} />,
   AnimalControl: <PawPrint strokeWidth={0.8} />,
-  Violence: <Ear strokeWidth={0.8} />, // could swap later if we want
+  Violence: <Ear strokeWidth={0.8} />, 
   Other: <Box strokeWidth={0.8} />,
 };
 
-function CallCard({ log }: { log: any }) {
+function CallCard({ log }) {
   const { selectedCallLog, setSelectedCallLog } = useCallLog();
   const { id, createdAt, status, type } = log;
 
   return (
     <div
       onClick={() => {
-        // clicking a row picks that call in the rest of the dashboard
         setSelectedCallLog(log);
       }}
       className={cn(
@@ -51,9 +47,10 @@ function CallCard({ log }: { log: any }) {
         {/* show an icon if we know this type */}
         {type && typeIconMap[type]}
       </div>
+
       <div className="flex-1">
         <div className="flex items-center ml-2">
-          {/* callTypeMap can say “Maintenance”, “Security”, etc. for us */}
+          {}
           <p className="text-sm font-light">{type && callTypeMap[type]}</p>
           <p
             className={cn(
@@ -67,6 +64,7 @@ function CallCard({ log }: { log: any }) {
             {status}
           </p>
         </div>
+
         <div className="flex justify-between mt-1">
           <p className="text-xs text-muted ml-2">#{id}</p>
           <p className="ml-auto text-xs text-gray-500">
