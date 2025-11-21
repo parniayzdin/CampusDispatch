@@ -1,0 +1,158 @@
+// components/window.tsx
+// generic frame for each panel in the dispatch dashboard
+
+import useCallLog from "@/context/use-call-log";
+import { cn } from "@/utils";
+import {
+  ArrowLeftFromLine,
+  ArrowRightFromLine,
+  Circle,
+  EllipsisVertical,
+  ShieldCheck,
+  X,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import { ThreeCircles } from "react-loader-spinner";
+
+type LoadingState = "initialize" | "fetching" | "completed";
+
+function CampusWindowFrame({
+  title,
+  loading,
+  loadingOffset,
+  children,
+  className,
+  shield,
+  sort,
+  parentID,
+  controlSelected,
+  expandable,
+  ai,
+}: {
+  title: string;
+  loading: LoadingState;
+  loadingOffset?: number;
+  children?: React.ReactNode;
+  className?: string;
+  shield?: boolean;
+  sort?: React.ReactNode;
+  parentID?: string;
+  controlSelected?: boolean;
+  expandable?: boolean;
+  ai?: boolean;
+}) {
+  const {
+    selectedCallLog,
+    setSelectedCallLog,
+    expandTranscript,
+    setExpandTranscript,
+    setInCall,
+    setCreateMode,
+    setEditMode,
+    setMetaData,
+    aiThinking,
+  } = useCallLog();
+
+  const [fetching, setFetching] = useState(false);
+
+  useEffect(() => {
+    if (loading === "fetching") {
+      setFetching(true);
+      const timeout = setTimeout(
+        () => setFetching(false),
+        loadingOffset ?? 1000
+      );
+      return () => clearTimeout(timeout);
+    }
+  }, [loading, loadingOffset]);
+
+  return (
+    <div className={cn("border rounded transition-all", className)}>
+      <div className="relative z-10 bg-card px-2 py-1 border-b flex items-center">
+        <h2 className="font-light uppercase">
+          {title}
+          {controlSelected && selectedCallLog ? ` - #${selectedCallLog.id}` : ""}
+        </h2>
+        <div className="ml-auto flex items-center">
+          {aiThinking && ai && (
+            <ThreeCircles
+              visible={true}
+              height={18}
+              width={18}
+              color="#4fa94d"
+              ariaLabel="three-circles-loading"
+            />
+          )}
+
+          <Circle
+            strokeWidth={0.7}
+            size={18}
+            className={cn(
+              "ml-1.5",
+              loading === "initialize" && "text-destructive fill-destructive",
+              fetching && "text-yellow-500 fill-yellow-500",
+              loading !== "initialize" &&
+                !fetching &&
+                "text-green-500 fill-green-500"
+            )}
+          />
+
+          {shield && (
+            <ShieldCheck className="ml-1.5" strokeWidth={0.7} size={18} />
+          )}
+
+          {sort}
+
+          {controlSelected && selectedCallLog && (
+            <X
+              onClick={() => {
+                // basic reset for the current call context
+                setSelectedCallLog(null);
+                setInCall(false);
+                setCreateMode(false);
+                setEditMode(false);
+                setMetaData(null);
+              }}
+              className="ml-1.5 cursor-pointer"
+              strokeWidth={0.7}
+              size={18}
+            />
+          )}
+
+          {expandable &&
+            (expandTranscript ? (
+              <ArrowRightFromLine
+                strokeWidth={0.7}
+                className="ml-1.5 cursor-pointer"
+                size={18}
+                onClick={() => setExpandTranscript(false)}
+              />
+            ) : (
+              <ArrowLeftFromLine
+                strokeWidth={0.7}
+                className="ml-1.5 cursor-pointer"
+                size={18}
+                onClick={() => setExpandTranscript(true)}
+              />
+            ))}
+
+          <EllipsisVertical strokeWidth={0.7} size={18} />
+        </div>
+      </div>
+
+      <div id={parentID} className="overflow-y-auto h-[calc(100%-33px)]">
+        {loading === "initialize" ? (
+          <div />
+        ) : fetching ? (
+          <div className="flex justify-center items-center h-[calc(100%-33px)]">
+            Loading...
+          </div>
+        ) : (
+          children
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default CampusWindowFrame;
