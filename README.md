@@ -7,6 +7,11 @@ CampusDispatch Lite makes it easy to keep campus operations running smoothly. Us
 - A live dashboard showing all open and resolved incidents
 - Simple, intuitive UI for both users and responders
 
+## 🖥️ Technical overview:
+  <img width="1024" height="585" alt="image" src="https://github.com/user-attachments/assets/ef51828d-3128-4860-9cc6-43e143bdd367" />
+
+
+
 
 
 
