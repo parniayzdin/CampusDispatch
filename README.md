@@ -8,7 +8,10 @@ CampusDispatch Lite makes it easy to keep campus operations running smoothly. Us
 - Simple, intuitive UI for both users and responders
 
 ## 🖥️ Technical overview:
-  <img width="1024" height="585" alt="image" src="https://github.com/user-attachments/assets/ef51828d-3128-4860-9cc6-43e143bdd367" />
+CampusDispatch is built as a lightweight workflow system for campus operations. The application follows a modular architecture that separates reporting, dispatching, and data processing, allowing each part to scale independently and remain easy to maintain.
+<img width="1536" height="1024" alt="Untitled design (2)" src="https://github.com/user-attachments/assets/97cb1e4d-cf05-4537-aeb5-6b114350a568" />
+
+
 
 
 
