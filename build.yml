@@ -1,0 +1,30 @@
+
+name: CI - Build and Test wordsearch
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make wordsearch
+        run: make wordsearch
+
+      - name: upload wordsearch 
+        uses: actions/upload-artifact@v4
+        with:
+          name: wordsearch
+          path: ./wordsearch
+      
+      - name: run clean executable
+        run: ./wordsearch puzzle.txt < words.txt > solved.txt
+      
+      - name: ordsearch executable and solved.txt
+        uses: actions/upload-artifact@v4
+        with:
+          name: solved.txt
+          path: solved.txt
