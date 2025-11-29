@@ -38,3 +38,6 @@ function MapPanel({ incidents, units, selectedIncidentId }) {
           <div className="absolute top-3 left-3 text-[0.6rem] text-slate-400 uppercase">
             {selectedZone}
           </div>
+
+          <div className="absolute bottom-3 left-3 text-[0.6rem] text-slate-400 flex flex-col gap-1">
+            <span>
