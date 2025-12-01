@@ -93,29 +93,3 @@ function MapPanel({ incidents, units, selectedIncidentId }) {
             </div>
           ))}
         </div>
-
-        <div className="flex flex-col border-l border-slate-800 bg-slate-950/70">
-          <div className="px-3 py-2 border-b border-slate-800 flex items-center justify-between text-[0.65rem] uppercase text-slate-400">
-            <span>Sector Telemetry</span>
-            <RadioTower className="w-3 h-3" strokeWidth={1} />
-          </div>
-
-          <div className="flex-1 p-3 text-[0.65rem] text-slate-300 space-y-2">
-            {selectedIncident ? (
-              <>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Incident</span>
-                  <span className="uppercase">
-                    {selectedIncident.category?.toLowerCase() || "unknown"}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Status</span>
-                  <span className="uppercase">{selectedIncident.status}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Location</span>
-                  <span className="truncate max-w-[140px]">
-                    {selectedIncident.location}
-                  </span>
-                </div>
