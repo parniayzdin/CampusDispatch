@@ -93,3 +93,74 @@ function MapPanel({ incidents, units, selectedIncidentId }) {
             </div>
           ))}
         </div>
+
+        <div className="flex flex-col border-l border-slate-800 bg-slate-950/70">
+          <div className="px-3 py-2 border-b border-slate-800 flex items-center justify-between text-[0.65rem] uppercase text-slate-400">
+            <span>Sector Telemetry</span>
+            <RadioTower className="w-3 h-3" strokeWidth={1} />
+          </div>
+
+          <div className="flex-1 p-3 text-[0.65rem] text-slate-300 space-y-2">
+            {selectedIncident ? (
+              <>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Incident</span>
+                  <span className="uppercase">
+                    {selectedIncident.category?.toLowerCase() || "unknown"}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Status</span>
+                  <span className="uppercase">{selectedIncident.status}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Location</span>
+                  <span className="truncate max-w-[140px]">
+                    {selectedIncident.location}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">ETA (nearest unit)</span>
+                  <span>{selectedIncident.eta || "3–7 min"}</span>
+                </div>
+              </>
+            ) : (
+              <p className="text-slate-500">
+                Select an incident from the call log to focus the map.
+              </p>
+            )}
+
+            <div className="mt-3 pt-2 border-t border-slate-800 space-y-1">
+              <p className="text-slate-500">Active units</p>
+              {activeUnits.length === 0 && (
+                <p className="text-slate-600">No units online.</p>
+              )}
+              {activeUnits.slice(0, 4).map((u) => (
+                <div
+                  key={u.id}
+                  className="flex items-center justify-between text-slate-300"
+                >
+                  <span className="flex items-center gap-1">
+                    <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
+                    {u.label}
+                  </span>
+                  <span className="text-slate-500 uppercase text-[0.6rem]">
+                    {u.status || "AVAILABLE"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+MapPanel.defaultProps = {
+  incidents: [],
+  units: [],
+  selectedIncidentId: null,
+};
+
+export default MapPanel;
