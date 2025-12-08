@@ -89,3 +89,5 @@ function StatusPanel({ incident, events, assignedUnit }) {
                   </div>
                 )}
               </div>
+            </>
+          ) : ( //add text
