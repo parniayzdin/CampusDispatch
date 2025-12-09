@@ -90,4 +90,41 @@ function StatusPanel({ incident, events, assignedUnit }) {
                 )}
               </div>
             </>
-          ) : ( //add text
+          ) : (
+            <p className="text-slate-500">
+              Select an incident from the call log to view status and timeline.
+            </p>
+          )}
+        </div>
+
+        <div className="flex-1 px-4 py-3 flex flex-col gap-3 overflow-y-auto">
+          <div className="space-y-2">
+            <p className="uppercase text-[0.65rem] text-slate-400">
+              Timeline
+            </p>
+            <div className="space-y-2">
+              {hasIncident && timeline.length === 0 && (
+                <p className="text-slate-600 text-[0.65rem]">
+                  No events recorded yet for this incident.
+                </p>
+              )}
+
+              {timeline.map((evt, index) => (
+                <div key={evt.id || index} className="flex gap-2">
+                  <div className="flex flex-col items-center">
+                    {index === timeline.length - 1 ? (
+                      <CheckCircle2 className="w-3 h-3 text-sky-300" strokeWidth={1} />
+                    ) : (
+                      <CircleDot className="w-3 h-3 text-slate-400" strokeWidth={1} />
+                    )}
+                    {index !== timeline.length - 1 && (
+                      <div className="flex-1 w-px bg-slate-700/60 mt-1 mb-1" />
+                    )}
+                  </div>
+                  <div className="space-y-0.5 pb-2">
+                    <p className="text-slate-200 text-[0.7rem]">
+                      {evt.label || evt.kind || "Event"}
+                    </p>
+                    <p className="text-slate-500 text-[0.6rem]">
+                      {evt.time || evt.at || "Just now"}
+                    </p>
