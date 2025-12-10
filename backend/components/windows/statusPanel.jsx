@@ -128,3 +128,9 @@ function StatusPanel({ incident, events, assignedUnit }) {
                     <p className="text-slate-500 text-[0.6rem]">
                       {evt.time || evt.at || "Just now"}
                     </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
