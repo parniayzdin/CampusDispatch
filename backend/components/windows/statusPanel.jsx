@@ -128,9 +128,38 @@ function StatusPanel({ incident, events, assignedUnit }) {
                     <p className="text-slate-500 text-[0.6rem]">
                       {evt.time || evt.at || "Just now"}
                     </p>
+                    {evt.detail && (
+                      <p className="text-slate-400 text-[0.6rem]">
+                        {evt.detail}
+                      </p>
                     )}
                   </div>
                 </div>
               ))}
             </div>
           </div>
+
+          {hasIncident && (
+            <div className="pt-2 border-t border-slate-800 space-y-2">
+              <p className="uppercase text-[0.65rem] text-slate-400">
+                Summary
+              </p>
+              <p className="text-slate-300 text-[0.7rem] leading-relaxed">
+                {incident.summary ||
+                  "Dispatcher can use this panel to track assignment, status changes, and resolution notes for the selected incident in real time."}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+StatusPanel.defaultProps = {
+  incident: null,
+  events: [],
+  assignedUnit: null,
+};
+
+export default StatusPanel;
