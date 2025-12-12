@@ -163,3 +163,14 @@ StatusPanel.defaultProps = {
 };
 
 export default StatusPanel;
+
+//pass in simple objects for now:
+//const selectedIncident = {
+  //id: "123",
+  //title: "Water leak near LS-102",
+  //location: "Life Sciences LS-102",
+  //status: "ASSIGNED",
+  //severity: 2,
+  //timeAgo: "5 min ago",
+  //summary: "Reported water leak in corridor; maintenance unit dispatched."
+//};
