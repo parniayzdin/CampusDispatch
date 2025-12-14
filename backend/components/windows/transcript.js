@@ -18,3 +18,20 @@ function TranscriptMessage({ msg }) {
         ) : isSystem ? (
           <Clock className="w-3 h-3" strokeWidth={1} />
         ) : (
+          <User className="w-3 h-3 text-emerald-300" strokeWidth={1} />
+        )}
+      </div>
+
+      <div className="flex-1">
+        <p className="leading-relaxed">
+          {msg.text}
+        </p>
+        {msg.time && (
+          <p className="text-[0.6rem] text-slate-500 mt-0.5">
+            {msg.time}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
