@@ -35,3 +35,6 @@ function TranscriptMessage({ msg }) {
     </div>
   );
 }
+
+function TranscriptPanel({ transcript }) {
+  const messages = transcript || []; //need to add some transcripts
