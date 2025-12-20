@@ -16,3 +16,11 @@ export const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+        dispatch:
+          "bg-slate-900/80 text-slate-100 border border-slate-700/70 hover:bg-slate-900",
+        alert:
+          "bg-red-500/15 text-red-200 border border-red-500/40 hover:bg-red-500/20",
+        success:
+          "bg-emerald-500/15 text-emerald-200 border border-emerald-500/40 hover:bg-emerald-500/20",
+      }, //fix
