@@ -23,4 +23,8 @@ export const buttonVariants = cva(
           "bg-red-500/15 text-red-200 border border-red-500/40 hover:bg-red-500/20",
         success:
           "bg-emerald-500/15 text-emerald-200 border border-emerald-500/40 hover:bg-emerald-500/20",
-      }, //fix
+      },
+      size: {
+        default: "h-9 px-4 py-2",
+        sm: "h-8 rounded-md px-3 text-xs",
+        lg: "h-10 rounded-md px-8",
