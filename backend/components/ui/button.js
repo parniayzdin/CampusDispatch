@@ -32,3 +32,9 @@ export const buttonVariants = cva(
         pill: "h-8 rounded-full px-4 text-xs",
       },
     },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
