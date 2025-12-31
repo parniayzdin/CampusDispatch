@@ -3,6 +3,8 @@
 import "regenerator-runtime/runtime";
 import React, { useEffect, useRef, useState } from "react";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import IncidentHeatmap from "@/components/IncidentHeatmap";
+
 
 function randomId() {
   return crypto?.randomUUID?.() || String(Date.now());
@@ -148,6 +150,16 @@ export default function Dictaphone() {
           Case: <span className="font-medium">{caseNumber}</span>
         </div>
       </div>
+
+    {/* Heatmap block */}
+    <div className="rounded border border-slate-800 bg-slate-950/70 p-3">
+        <p className="uppercase text-[0.65rem] tracking-wide text-slate-500">
+            Incident Hotspots (WebGL)
+        </p>
+        <div className="mt-2">
+        <IncidentHeatmap />
+        </div>
+    </div>
 
       <div className="flex items-center justify-between text-[0.7rem] text-slate-400">
         <span>Microphone: {listening ? "ON" : "OFF"}</span>
